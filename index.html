@@ -1,5 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巡房日報系統</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <style>
+        body { font-family: -apple-system, sans-serif; padding: 20px; background-color: #f4f7f6; color: #333; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; }
+        label { display: block; margin-top: 15px; font-weight: bold; font-size: 14px; }
+        input, textarea { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 15px; background-color: #00b900; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; margin-top: 25px; cursor: pointer; }
+        button:active { background-color: #009e00; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>📝 每日巡房日報</h2>
+    
+    <label>管理者</label>
+    <input type="text" id="user" placeholder="請輸入名字">
+
+    <label>評價幾則</label>
+    <input type="number" id="review" placeholder="今日評價數">
+
+    <label>A區巡房</label>
+    <textarea id="A" rows="2"></textarea>
+
+    <label>B區巡房</label>
+    <textarea id="B" rows="2"></textarea>
+
+    <label>C區巡房</label>
+    <textarea id="C" rows="2"></textarea>
+
+    <label>D區巡房</label>
+    <textarea id="D" rows="2"></textarea>
+
+    <label>玻璃屋巡房</label>
+    <textarea id="glass" rows="2"></textarea>
+
+    <label>小天使已做</label>
+    <textarea id="angel_done" rows="2"></textarea>
+
+    <label>管理者交辦內容</label>
+    <textarea id="manager_assign" rows="2"></textarea>
+
+    <label>小天使交辦內容</label>
+    <textarea id="angel_reply" rows="2"></textarea>
+
+    <label>需要TINA或點點決策事宜</label>
+    <textarea id="decision" rows="3"></textarea>
+
+    <button onclick="submitData()">確認送出</button>
+</div>
+
 <script>
-    // ⚠️ 這裡已經幫您填好剛才截圖中的網址與 ID
+    // ⚠️ 這裡已經填入您截圖中的正確網址與 ID
     const API_URL = "https://script.google.com/macros/s/AKfycbxaaJGbJNEB8u-TzOwDQbYKDPFmoDDr2KbC34WZA495MvRlUKqYyGxdjlnQb7or37NVdw/exec"; 
     const MY_LIFF_ID = "2009933180-m1pQd7Xs";
 
@@ -29,10 +87,13 @@
                 body: JSON.stringify(data),
                 mode: 'no-cors'
             });
-            alert("✅ 送出成功！請至試算表確認。");
+            alert("✅ 送出成功！資料已寫入試算表。");
             liff.closeWindow();
         } catch (error) {
-            alert("❌ 送出失敗，請檢查網址或權限。");
+            alert("❌ 送出失敗，請確認網路或聯繫特助。");
         }
     }
 </script>
+
+</body>
+</html>
